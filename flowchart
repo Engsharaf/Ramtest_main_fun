@@ -1,0 +1,49 @@
+State Diagram: RAM Test Execution
+
+States:
+- Start
+- Is RAM Test Execution Running?
+  - Yes
+    - Is it the first call?
+      - Yes
+        - Initialize variables
+          - Update isFirstCall flag
+        - Testing Logic
+          - Is RamTstNumberOfTestedCells reached?
+            - Yes
+              - Testing Complete
+            - No
+              - Block End Reached
+      - No
+        - Testing Logic
+          - Is RamTstNumberOfTestedCells reached?
+            - Yes
+              - Testing Complete
+            - No
+              - Block End Reached
+  - No
+    - No Testing
+- All Blocks Tested
+- Update Results
+- End
+
+Transitions:
+- Start -> Is RAM Test Execution Running?
+- Is RAM Test Execution Running? (Yes) -> Is it the first call?
+- Is it the first call? (Yes) -> Initialize variables
+- Initialize variables -> Update isFirstCall flag
+- Is it the first call? (No) -> Testing Logic
+- Testing Logic -> Is RamTstNumberOfTestedCells reached?
+- Is RamTstNumberOfTestedCells reached? (Yes) -> Testing Complete
+- Is RamTstNumberOfTestedCells reached? (No) -> Block End Reached
+- Block End Reached -> Testing Logic
+- Testing Complete -> Update Results
+- Block End Reached -> Update Results
+- Update Results -> Is it the first call?
+- Is RAM Test Execution Running? (No) -> No Testing
+- No Testing -> End
+- Update Results -> End
+- Is it the first call? (Yes) -> Testing Logic
+- Testing Logic -> All Blocks Tested
+- All Blocks Tested -> Update Results
+
